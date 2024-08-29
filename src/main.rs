@@ -12,14 +12,14 @@ fn main() {
     // };
 
     let config = Config::build(&args).unwrap_or_else(|err| {
-        println!("{err}");
+        eprintln!("{err}");
         process::exit(1);
     });
 
     println!("Searching for {:?} in {:?}", config.query, config.file_path);
 
     if let Err(e) = minigrep::run(config) {
-        println!("Application error: {e}");
+        eprintln!("Application error: {e}");
         process::exit(1);
     }
 }
